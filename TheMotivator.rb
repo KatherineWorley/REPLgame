@@ -1,46 +1,47 @@
 require_relative 'Constants.rb'
 require_relative 'Messages.rb'
+require_relative 'Inputs.rb'
 
-intro()
+Messages.intro()
 
 ls_input = nil
-ls_input = gatherLeaveStayInput(ls_input)
+ls_input = Inputs.gatherLeaveStayInput(ls_input)
 
 if ls_input == "leave"
-  messageLeave()
+  Messages.messageLeave()
   nsew_input = nil
-  nsew_input = gatherDirection(nsew_input)
+  nsew_input = Inputs.gatherDirection(nsew_input)
 
 	if NORTH_DIRECTION.include?(nsew_input)
  		puts "Awesome. You're taking I-75 north."
  		north_input = nil
-    north_input = gatherNorthInput(north_input)
+    north_input = Inputs.gatherNorthInput(north_input)
 
  		if YES_OPTIONS.include?(north_input)
-      congratsCategory2()
+      Messages.congratsCategory2()
 		else
-      enjoyYourGoingToGeorgia()
+      Messages.enjoyYourGoingToGeorgia()
 		end
 
 	elsif EAST_DIRECTION.include?(nsew_input)
 		puts "You've decided to take I-4"
 		east_input = nil
-    east_input = gatherEastDirectionOrlando(east_input)
+    east_input = Inputs.gatherEastDirectionOrlando(east_input)
 
  		if  YES_OPTIONS.include?(east_input)
-      congratsOrlandoCategory2()
+      Messages.congratsOrlandoCategory2()
 		else
-      enjoyYourGoingToGeorgia()
+      Messages.enjoyYourGoingToGeorgia()
 		end
 
 	elsif SOUTH_DIRECTION.include?(nsew_input)
-    badMoveFloodedCarAndCategory4()
+    Messages.badMoveFloodedCarAndCategory4()
 
   else
-    westIsTheGulfOfMexico()
+    Messages.westIsTheGulfOfMexico()
 	end
 
 else
-  youChoseToStay()
+  Messages.youChoseToStay()
 end
 
